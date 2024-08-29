@@ -1,8 +1,8 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
+import EditScreenInfo from "@/src/components/EditScreenInfo";
 import Colors from "@/src/constants/Colors";
 import products from "@/assets/data/products";
-import ProductListItem from "@/src/components/ProductListItem";
 
 interface IPropType {
   product: {
@@ -13,15 +13,17 @@ interface IPropType {
   };
 }
 
-
-export default function TabOneScreen() {
+const ProductListItem = ({ product }: IPropType) => {
   return (
-    <View>
-      <ProductListItem product={products[0]} />
-      <ProductListItem product={products[1]} />
+    <View style={styles.container}>
+      <Image source={{ uri: product.image }} style={styles.image} />
+      <Text style={styles.title}>{product.name}</Text>
+      <Text>${product.price}</Text>
     </View>
   );
-}
+};
+
+export default ProductListItem;
 
 const styles = StyleSheet.create({
   container: {
